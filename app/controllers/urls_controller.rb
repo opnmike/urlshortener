@@ -18,6 +18,9 @@ class UrlsController < ApplicationController
   def create
     @url = Url.new(url_params)
     @url.sanitize
+    if current_user
+      @url.user = current_user
+    end
     if @url.new_url?
       if @url.save
         redirect_to shortened_path(@url.short_url)

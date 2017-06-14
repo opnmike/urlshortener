@@ -4,6 +4,8 @@ class Url < ApplicationRecord
     with: /\A(?:(?:http|https):\/\/)?([-a-zA-Z0-9.]{2,256}\.[a-z]{2,4})\b(?:\/[-a-zA-Z0-9@,!:%_\+.~#?&\/\/=]*)?\z/
   before_create :generate_short_url
 
+  belongs_to :user, optional: true
+
   def generate_short_url
     chars = ['0'..'9','A'..'Z','a'..'z'].map{|range| range.to_a}.flatten
     # here we assign a short_url

@@ -16,7 +16,7 @@
     <br />
 
     <% if user_signed_in? %>
-      Welcome, user that has the email address of <%= current_user.email %>
+      Welcome, user that has the email address of <a href="/users/<%= current_user.id %>"><%= current_user.email %></a>
       <li>
       <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
       </li>

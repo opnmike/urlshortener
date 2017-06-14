@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614020049) do
+ActiveRecord::Schema.define(version: 20170614031921) do
 
   create_table "urls", force: :cascade do |t|
     t.text     "original_url"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 20170614020049) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "sanitized_url"
+    t.integer  "owner_id"
+    t.integer  "user_id"
+    t.index ["owner_id"], name: "index_urls_on_owner_id"
+    t.index ["user_id"], name: "index_urls_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
