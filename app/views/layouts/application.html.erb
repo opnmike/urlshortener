@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Urlshortener</title>
+    <title>URL Shortener</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,5 +10,20 @@
 
   <body>
     <%= yield %>
+
+    <br />
+    <hr />
+    <br />
+
+    <% if user_signed_in? %>
+      Welcome, user that has the email address of <%= current_user.email %>
+      <li>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+      </li>
+    <% else %>
+      <li>
+      <%= link_to('Login', new_user_session_path)  %>
+      </li>
+    <% end %>
   </body>
 </html>

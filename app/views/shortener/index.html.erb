@@ -1,3 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>Test</p>
+<h1>URL Shortener</h1>
+
+Enter a URL below.<br /><br />
+
+<%= simple_form_for @url do |f| %>
+  <%= f.input :original_url, label: "URL", as: :string %>
+  <%= f.button :submit %>
+<% end %>

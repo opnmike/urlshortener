@@ -2,13 +2,13 @@
 
 <p>
   <strong>Original url:</strong>
-  <%= @url.original_url %>
+  <%= @url.sanitized_url %>
 </p>
 
 <p>
   <strong>Short url:</strong>
-  <%= @url.short_url %>
+  <a href="/<%= @url.short_url %>"><%= request.base_url %>/<%= @url.short_url %></a>
 </p>
 
 <%= link_to 'Edit', edit_url_path(@url) %> |
-<%= link_to 'Back', urls_path %>
+<%= link_to 'Back', index_path %>
