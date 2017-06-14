@@ -37,7 +37,13 @@ class UrlsController < ApplicationController
   end
 
   def shortened
-    render 'urls/show'
+    if @url
+      render 'urls/show'
+    else
+      @url = Url.new
+      flash[:error] = "No analytics for a URL that doesn't exist!"
+      render 'shortener/index'
+    end
   end
 
   private
