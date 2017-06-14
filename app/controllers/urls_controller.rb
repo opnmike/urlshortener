@@ -6,7 +6,13 @@ class UrlsController < ApplicationController
   end
 
   def show
-    redirect_to @url.sanitized_url
+    if @url
+      redirect_to @url.sanitized_url
+    else
+      @url = Url.new
+      flash[:error] = "Unable to redirect to a URL. Did you get here by mistake?"
+      render 'shortener/index'
+    end
   end
 
   def create
