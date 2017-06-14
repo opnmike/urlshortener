@@ -10,5 +10,10 @@
   <a href="/<%= @url.short_url %>"><%= request.base_url %>/<%= @url.short_url %></a>
 </p>
 
+<p>
+  <strong>Clicks:</strong>
+  <%= @url.click_count %>
+</p>
+
 <%= link_to 'New URL', index_path %> |
 <%= link_to 'See All URLs', urls_path %>

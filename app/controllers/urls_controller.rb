@@ -7,6 +7,8 @@ class UrlsController < ApplicationController
 
   def show
     if @url
+      @url.click_count += 1
+      @url.save
       redirect_to @url.sanitized_url
     else
       @url = Url.new
